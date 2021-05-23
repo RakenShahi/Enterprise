@@ -14,6 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(name = "findAllItems", query = "SELECT i FROM Item i")
 public class Item {
 
     //Attributes
