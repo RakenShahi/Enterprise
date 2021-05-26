@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ago="http://java.sun.com/jsf/composite/apress">
+<h:head>
+    <title>Creates a new Game</title>
+</h:head>
+<h:body>
+    <h1>Create a new Game</h1>
+    <hr/>
+    <h:form>
+        <table border="0">
+            <ago:newItem item="#{itemController.game}"/>
+            
+            <tr>
+                <td>
+                    <h:outputLabel value="HD Video Output: "/>
+                </td>
+                <td>
+                    <h:inputText value="#{itemController.game.videoOutput}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <h:outputLabel value="Hard Drive Space: "/>
+                </td>
+                <td>
+                    <h:inputText value="#{itemController.game.hDSpace}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <h:outputLabel value="Number of Players: "/>
+                </td>
+                <td>
+                    <h:inputText value="#{itemController.game.noOfPlayers}"/>
+                </td>
+            </tr>
+             
+
+        </table>
+
+        <h:commandButton value="Create a Game" action="#{itemController.doCreateGame}"/>
+
+    </h:form>
+    <hr/>
+    <i>Creat game page</i>
+
+</h:body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+
+
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:head>
+        <title>Creates a new Movie</title>
+    </h:head>
+    <h:body>
+        <h1>Create a new Movie</h1>
+        <hr/>
+        <h:form>
+            <h:panelGrid columns="2" >
+                        <h:outputLabel value="Title : "/>
+              
+                        <h:inputText value="#{ItemController.Item.title}"/>
+                              
+
+               
+                        <h:outputLabel value="Describtion : "/>
+                   
+                        <h:inputTextarea value="#{ItemController.Item.description}" cols="20" rows="5"/>
+                   
+                        <h:outputLabel value="Company : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.company}"/>
+                   
+                        <h:outputLabel value="Platform : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.platform}"/>
+                    
+                        <h:outputLabel value="Classification : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.classification}"/>
+                    
+                        <h:outputLabel value="Price : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.price}"/>
+                    
+                        <h:outputLabel value="Stock number : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.stockNumber}"/>
+                    
+                        <h:outputLabel value="Duration(minutes) : "/>
+                    
+                        <h:inputText value="#{ItemController.Item.duration}"/>
+                    
+                        <h:outputLabel value="Special Features : "/>
+                  
+
+                        <h:inputTextarea value="#{ItemController.Item.specialFeatures}" cols="20" rows="5"/>
+                   
+
+
+            </h:panelGrid>    
+            <h:commandButton value="Create a Movie" action="#{ItemController.doCreateMovie}"/>
+
+        </h:form>
+        <hr/>
+        <i>JSF Components and Pages</i>
+
+    </h:body>
+</html>

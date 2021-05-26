@@ -5,16 +5,29 @@
  */
 package ebsystem;
 
-import javax.persistence.*;
-
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
 
 /**
  *
- * @author Raken
+ * @author Bishal
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = "findAllItems", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findAllMovies", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findAllGames", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findAllCustomers", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findAllOrders", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findSpecificCustomer", query = "SELECT i FROM Item i")
+
+
 public class Item {
 
     //Attributes
@@ -27,14 +40,14 @@ public class Item {
     protected String platform;
     protected String classification;
     protected Float price;
-    protected Integer stockNumber;
+    protected Float stockNumber;
 
 
     //Constructors 
     public Item() {
     }
 
-    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, int stockNumber) {
+    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, Float stockNumber) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -101,11 +114,11 @@ public class Item {
         this.price = price;
     }
 
-    public int getStockNumber() {
+    public Float getStockNumber() {
         return stockNumber;
     }
 
-    public void setStockNumber(int stockNumber) {
+    public void setStockNumber(Float stockNumber) {
         this.stockNumber = stockNumber;
     }
 

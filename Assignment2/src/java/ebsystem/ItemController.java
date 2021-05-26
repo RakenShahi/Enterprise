@@ -1,9 +1,10 @@
+package ebsystem;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ebsystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,10 @@ import javax.faces.bean.ManagedBean;
 
 /**
  *
- * @author Raken
+ * @author Bishal
  */
 @ManagedBean
-@Named(value = "itemController")
+//@Named(value = "itemController")
 @RequestScoped
 public class ItemController {
 
@@ -27,10 +28,13 @@ public class ItemController {
     private ItemEJB itemEJB;
     private Movie movie = new Movie();
     private Game game = new Game();
+    private Customer customer=new Customer();
     private Item item= new Item();
     private List<Item> itemList = new ArrayList<Item>();
     private List<Movie> movieList = new ArrayList<Movie>();
     private List<Game> gameList = new ArrayList<Game>();
+    private List<Customer> customerList = new ArrayList<Customer>();
+
 
     //Public methods           
     public String doNewMovie() {
@@ -39,6 +43,10 @@ public class ItemController {
 
     public String doNewGame() {
         return "newGame.xhtml";
+    }
+    
+    public String doNewCustomer(){
+    return "newCustomer.xhtml";
     }
     
     public String doCreateMovie() {
@@ -52,8 +60,12 @@ public class ItemController {
         gameList = itemEJB.findGames();
         return "listGames.xhtml";
     }
-
-
+    
+    public String doCreateCustomer() {
+        customer = itemEJB.createCustomer(customer);
+        customerList = itemEJB.findCustomer();
+        return "listCustomer.xhtml";
+    }
 
     public Movie getMovie() {
         return movie;
@@ -95,5 +107,13 @@ public class ItemController {
         this.gameList = gameList;
     }
 
+    public void setSpecificCustomer(Customer fcustomer){
+        this.customer=fcustomer;
     
+    }
+  
+    public Customer getSpecificCustomer(){
+    return customer;
+    }
+  
 }

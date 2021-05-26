@@ -6,8 +6,8 @@
 package ebsystem;
 
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,14 +15,14 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Raken
+ * @author Bishal
  */
 @Stateless
 @LocalBean
 public class ItemEJB {
 
     // Attributes             
-    @PersistenceContext(unitName = "EBS")
+    @PersistenceContext(unitName = "as2PU")
     private EntityManager em;
 
     // Public Methods           
@@ -34,6 +34,11 @@ public class ItemEJB {
     public List<Movie> findMovies() {
         TypedQuery<Movie> query = em.createNamedQuery("findAllMovies", Movie.class);
         return query.getResultList();
+    }
+    
+    public Customer findSpecificCustomer(){
+    TypedQuery<Customer> query1 = em.createNamedQuery("findSpecificCustomer", Customer.class);
+    return query1.getSingleResult();
     }
 
     public Movie createMovie(Movie movie) {
@@ -49,5 +54,15 @@ public class ItemEJB {
     public Game createGame(Game game) {
         em.persist(game);
         return game;
+    }
+    
+    public List<Customer> findCustomer() {
+        TypedQuery<Customer> query = em.createNamedQuery("findAllCustomers", Customer.class);
+        return query.getResultList();
+    }
+
+    public Customer createCustomer(Customer customer) {
+        em.persist(customer);
+        return customer;
     }
 }
