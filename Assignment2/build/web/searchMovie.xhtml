@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Search for a Movie</title>
+    </h:head>
+    <h:body>
+        <h1>Search for a Movie</h1>
+        <hr/>
+        <h:form>
+
+
+
+
+            <h:outputLabel value="Title "/>
+
+            <h:inputText value="#{itemController.movie.title}"/>
+
+
+            <h:commandButton value="search for a Movie" action="#{itemController.doSearchMovie}"/>
+
+        </h:form>
+        <hr/>
+
+
+    </h:body>
+    <hr/>
+    <a href="listMovies.faces" style="font-size:20px;">The Stock of Movies | </a>
+
+    <a href="index.faces" style="font-size:20px;">Main Page | </a>
+</html>

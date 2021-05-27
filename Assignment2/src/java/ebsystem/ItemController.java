@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 
 /**
  *
- * @author Bishal
+ * @author Raken
  */
 @ManagedBean
 //@Named(value = "itemController")
@@ -27,6 +27,7 @@ public class ItemController {
     @EJB
     private ItemEJB itemEJB;
     private Movie movie = new Movie();
+    private Movie fMovie=new Movie();
     private Game game = new Game();
     private Customer customer=new Customer();
     private Item item= new Item();
@@ -55,6 +56,11 @@ public class ItemController {
         return "listMovies.xhtml";
     }
     
+    public String doSearchMovie(){
+        fMovie = itemEJB.findSpecificMovie();
+        return "listMovies.xhtml";
+    }
+    
     public String doCreateGame() {
         game = itemEJB.createGame(game);
         gameList = itemEJB.findGames();
@@ -80,10 +86,12 @@ public class ItemController {
     }
 
     public void setGame(Game game) {
+
         this.game = game;
     }
 
     public List<Item> getItemList() {
+        itemList = itemEJB.findItems();
         return itemList;
     }
 
@@ -92,6 +100,7 @@ public class ItemController {
     }
 
     public List<Movie> getMovieList() {
+        movieList = itemEJB.findMovies();
         return movieList;
     }
 
@@ -100,6 +109,8 @@ public class ItemController {
     }
 
     public List<Game> getGameList() {
+                gameList = itemEJB.findGames();
+
         return gameList;
     }
 

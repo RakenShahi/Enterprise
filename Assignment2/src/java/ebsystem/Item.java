@@ -21,12 +21,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = "findAllItems", query = "SELECT i FROM Item i")
-@NamedQuery(name = "findAllMovies", query = "SELECT i FROM Item i")
-@NamedQuery(name = "findAllGames", query = "SELECT i FROM Item i")
-@NamedQuery(name = "findAllCustomers", query = "SELECT i FROM Item i")
-@NamedQuery(name = "findAllOrders", query = "SELECT i FROM Item i")
-@NamedQuery(name = "findSpecificCustomer", query = "SELECT i FROM Item i")
-
+//@NamedQuery(name = "findAllOrders", query = "SELECT i FROM Order i")
 
 public class Item {
 

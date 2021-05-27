@@ -12,6 +12,8 @@ import javax.persistence.*;
  * @author Raken
  */
 @Entity
+@NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c")
+@NamedQuery(name = "findSpecificCustomer", query = "SELECT sc FROM Customer sc")
 public class Customer {
 
     //Attributes

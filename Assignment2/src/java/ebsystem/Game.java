@@ -7,6 +7,7 @@ package ebsystem;
 
 import ebsystem.Item;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
  * @author Raken
  */
 @Entity
+@NamedQuery(name = "findAllGames", query = "SELECT g FROM Game g")
 public class Game extends Item{
 
     //Attributes

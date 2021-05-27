@@ -7,12 +7,15 @@ package ebsystem;
 
 import ebsystem.Item;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Raken
  */
 @Entity
+@NamedQuery(name = "findAllMovies", query = "SELECT m FROM Movie m")
+@NamedQuery(name = "findSpecificMovie", query = "select sm from Movie sm where sm.title = :title")
 public class Movie extends Item {
 
     //Attributes

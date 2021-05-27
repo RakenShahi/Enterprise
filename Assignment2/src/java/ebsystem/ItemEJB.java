@@ -27,7 +27,7 @@ public class ItemEJB {
 
     // Public Methods           
     public List<Item> findItems() {
-        Query query = em.createNamedQuery("findAllItems");
+        Query query = em.createNamedQuery("findAllItems",Item.class);
         return query.getResultList();
     }
     
@@ -35,6 +35,14 @@ public class ItemEJB {
         TypedQuery<Movie> query = em.createNamedQuery("findAllMovies", Movie.class);
         return query.getResultList();
     }
+    
+    public Movie findSpecificMovie() {
+        TypedQuery<Movie> query = em.createNamedQuery("findSpecificMovie", Movie.class);
+        query.setParameter("Title","JJLD");
+        Movie fMovie=query.getSingleResult();
+        return fMovie;
+    }
+    
     
     public Customer findSpecificCustomer(){
     TypedQuery<Customer> query1 = em.createNamedQuery("findSpecificCustomer", Customer.class);
