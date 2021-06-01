@@ -10,7 +10,7 @@
 
         <h1>The Found Movie</h1>
         <hr/>
-        <h:dataTable value="#{itemController.fMovie}" var="ml" border="1">
+        <h:dataTable value="#{itemController.foundList}" var="ml" border="1">
             <!--<h1>  Succesfully created list :   <h:outputText value="#{ml.title}"/>  </h1>-->
             <h:column>
                 <f:facet name="header">
@@ -24,6 +24,13 @@
                     <h:outputText value="Platform"/>
                 </f:facet>
                 <h:outputText value="#{ml.platform}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Duration"/>
+                </f:facet>
+                <h:outputText value="#{ml.duration}"/>
             </h:column>
 
 

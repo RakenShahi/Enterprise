@@ -1,9 +1,10 @@
+package ebsystem;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ebsystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,29 @@ public class ItemController {
     @EJB
     private ItemEJB itemEJB;
     private Movie movie = new Movie();
+    private Movie fMovie=new Movie();
+    private Item fitem=new Item();
     private Game game = new Game();
+    
     private Item item= new Item();
     private List<Item> itemList = new ArrayList<Item>();
+    private List<Item> foundList = new ArrayList<Item>();
+
     private List<Movie> movieList = new ArrayList<Movie>();
     private List<Game> gameList = new ArrayList<Game>();
+    
+    
+    //for getting search title
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 
     //Public methods           
     public String doNewMovie() {
@@ -41,10 +60,18 @@ public class ItemController {
         return "newGame.xhtml";
     }
     
+    
+    
     public String doCreateMovie() {
         movie = itemEJB.createMovie(movie);
         movieList = itemEJB.findMovies();
         return "listMovies.xhtml";
+    }
+    
+    public String doSearchMovie(){
+        setTitle(title);       
+         foundList= itemEJB.findSpecificMovie(title);
+        return "foundMovie.xhtml";
     }
     
     public String doCreateGame() {
@@ -52,8 +79,8 @@ public class ItemController {
         gameList = itemEJB.findGames();
         return "listGames.xhtml";
     }
-
-
+    
+   
 
     public Movie getMovie() {
         return movie;
@@ -68,10 +95,12 @@ public class ItemController {
     }
 
     public void setGame(Game game) {
+
         this.game = game;
     }
 
     public List<Item> getItemList() {
+        itemList = itemEJB.findItems();
         return itemList;
     }
 
@@ -80,14 +109,27 @@ public class ItemController {
     }
 
     public List<Movie> getMovieList() {
+        movieList = itemEJB.findMovies();
         return movieList;
     }
+
+    public List<Item> getFoundList() {
+        return foundList;
+    }
+
+    public void setFoundList(List<Item> foundList) {
+        this.foundList = foundList;
+    }
+    
+    
 
     public void setMovieList(List<Movie> movieList) {
         this.movieList = movieList;
     }
 
     public List<Game> getGameList() {
+                gameList = itemEJB.findGames();
+
         return gameList;
     }
 
@@ -96,4 +138,5 @@ public class ItemController {
     }
 
     
+  
 }

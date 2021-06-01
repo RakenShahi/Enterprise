@@ -6,8 +6,8 @@
 package ebsystem;
 
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,19 +15,19 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Raken
+ * @author Bishal
  */
 @Stateless
 @LocalBean
 public class ItemEJB {
 
     // Attributes             
-    @PersistenceContext(unitName = "EBSPU")
+    @PersistenceContext(unitName = "as2PU")
     private EntityManager em;
 
     // Public Methods           
     public List<Item> findItems() {
-        Query query = em.createNamedQuery("findAllItems");
+        Query query = em.createNamedQuery("findAllItems",Item.class);
         return query.getResultList();
     }
     
@@ -35,6 +35,18 @@ public class ItemEJB {
         TypedQuery<Movie> query = em.createNamedQuery("findAllMovies", Movie.class);
         return query.getResultList();
     }
+    
+    public List<Item> findSpecificMovie( String title) {
+//        title="JJLB";
+        TypedQuery<Item> query = em.createNamedQuery("findSpecificMovie", Item.class);
+        query.setParameter("title",title);
+                System.out.println("TItle obtained in item EJB:"+title);
+        return query.getResultList();
+//        return fMovie;
+    }
+    
+    
+    
 
     public Movie createMovie(Movie movie) {
         em.persist(movie);
@@ -51,14 +63,5 @@ public class ItemEJB {
         return game;
     }
     
-    public List<Customer> findCustomer(){
-    TypedQuery<Customer> query = em.createNamedQuery("findAllCustomers", Customer.class);
-    return query.getResultList();
-    }
-    
-     public Customer createCustomer(Customer customer) {
-        em.persist(customer);
-        return customer;
-    }
     
 }

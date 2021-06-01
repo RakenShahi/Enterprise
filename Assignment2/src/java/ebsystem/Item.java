@@ -5,16 +5,30 @@
  */
 package ebsystem;
 
-import javax.persistence.*;
-
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author Raken
+ * @author Bishal
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = "findAllItems", query = "SELECT i FROM Item i")
+@NamedQuery(name = "findSpecificMovie", query = "SELECT i FROM Item i WHERE i.title=:title")
+
+//@NamedQuery(name = "findAllOrders", query = "SELECT i FROM Order i")
+
 public class Item {
 
     //Attributes
@@ -27,14 +41,23 @@ public class Item {
     protected String platform;
     protected String classification;
     protected Float price;
-    protected Integer stockNumber;
+    protected Float stockNumber;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "Movie_fk")
+    private Movie movie;
+    
+//    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+//    @JoinColumn(name = "Game_fk")
+//    private Game game;
+    
 
 
     //Constructors 
     public Item() {
     }
 
-    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, int stockNumber) {
+    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, Float stockNumber) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -101,11 +124,11 @@ public class Item {
         this.price = price;
     }
 
-    public int getStockNumber() {
+    public Float getStockNumber() {
         return stockNumber;
     }
 
-    public void setStockNumber(int stockNumber) {
+    public void setStockNumber(Float stockNumber) {
         this.stockNumber = stockNumber;
     }
 

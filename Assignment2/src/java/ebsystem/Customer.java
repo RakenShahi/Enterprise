@@ -12,15 +12,18 @@ import javax.persistence.*;
  * @author Raken
  */
 @Entity
+@NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c")
+//@NamedQuery(name = "findSpecificCustomer", query = "SELECT sc FROM Customer sc WHERE sc.")
 public class Customer {
 
     //Attributes
     @Id
-    private Long id;
-    private String name;
-    private String address;
-    private String phoneNumber;
-    private String emailAddress;
+    @GeneratedValue
+    protected Long id;
+    protected String name;
+    protected String address;
+    protected String phoneNumber;
+    protected String emailAddress;
     
     //Constructors
     public Customer(){
