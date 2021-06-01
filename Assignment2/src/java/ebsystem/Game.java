@@ -5,9 +5,7 @@
  */
 package ebsystem;
 
-import ebsystem.Item;
 import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
 
 
 /**
@@ -15,20 +13,19 @@ import javax.persistence.NamedQuery;
  * @author Raken
  */
 @Entity
-@NamedQuery(name = "findAllGames", query = "SELECT g FROM Game g")
 public class Game extends Item{
 
     //Attributes
     private String videoOutput;   
-    private Float hDSpace;
-    private Float noOfPlayers;
+    private Integer hDSpace;
+    private Integer noOfPlayers;
 
     //Constructors
 
     public Game() {
     }
 
-    public Game(String videoOutput, Float hDSpace, Float noOfPlayers, Long id, String title, String description, String company, String platform, String classification, Float price, Float stockNumber) {
+    public Game(String videoOutput, Integer hDSpace, Integer noOfPlayers, Long id, String title, String description, String company, String platform, String classification, Float price, int stockNumber) {
         super(id, title, description, company, platform, classification, price, stockNumber);
         this.videoOutput = videoOutput;
         this.hDSpace = hDSpace;
@@ -43,22 +40,19 @@ public class Game extends Item{
         this.videoOutput = videoOutput;
     }
 
-    public Float gethDSpace() {
+    public Integer gethDSpace() {
         return hDSpace;
     }
 
-    public void sethDSpace(Float hDSpace) {
+    public void sethDSpace(Integer hDSpace) {
         this.hDSpace = hDSpace;
     }
 
-    public Float getNoOfPlayers() {
+    public Integer getNoOfPlayers() {
         return noOfPlayers;
     }
 
-    public void setNoOfPlayers(Float noOfPlayers) {
+    public void setNoOfPlayers(Integer noOfPlayers) {
         this.noOfPlayers = noOfPlayers;
-    }
-    
-    
-
+    } 
 }

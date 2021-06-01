@@ -5,24 +5,16 @@
  */
 package ebsystem;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
+
 
 /**
  *
- * @author Bishal
+ * @author Raken
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name = "findAllItems", query = "SELECT i FROM Item i")
-//@NamedQuery(name = "findAllOrders", query = "SELECT i FROM Order i")
-
 public class Item {
 
     //Attributes
@@ -35,14 +27,14 @@ public class Item {
     protected String platform;
     protected String classification;
     protected Float price;
-    protected Float stockNumber;
+    protected Integer stockNumber;
 
 
     //Constructors 
     public Item() {
     }
 
-    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, Float stockNumber) {
+    public Item(Long id, String title, String description, String company, String platform, String classification, Float price, int stockNumber) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -109,11 +101,11 @@ public class Item {
         this.price = price;
     }
 
-    public Float getStockNumber() {
+    public int getStockNumber() {
         return stockNumber;
     }
 
-    public void setStockNumber(Float stockNumber) {
+    public void setStockNumber(int stockNumber) {
         this.stockNumber = stockNumber;
     }
 

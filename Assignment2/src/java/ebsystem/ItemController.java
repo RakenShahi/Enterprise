@@ -1,10 +1,9 @@
-package ebsystem;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package ebsystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ import javax.faces.bean.ManagedBean;
  * @author Raken
  */
 @ManagedBean
-//@Named(value = "itemController")
+@Named(value = "itemController")
 @RequestScoped
 public class ItemController {
 
@@ -27,15 +26,11 @@ public class ItemController {
     @EJB
     private ItemEJB itemEJB;
     private Movie movie = new Movie();
-    private Movie fMovie=new Movie();
     private Game game = new Game();
-    private Customer customer=new Customer();
     private Item item= new Item();
     private List<Item> itemList = new ArrayList<Item>();
     private List<Movie> movieList = new ArrayList<Movie>();
     private List<Game> gameList = new ArrayList<Game>();
-    private List<Customer> customerList = new ArrayList<Customer>();
-
 
     //Public methods           
     public String doNewMovie() {
@@ -46,18 +41,9 @@ public class ItemController {
         return "newGame.xhtml";
     }
     
-    public String doNewCustomer(){
-    return "newCustomer.xhtml";
-    }
-    
     public String doCreateMovie() {
         movie = itemEJB.createMovie(movie);
         movieList = itemEJB.findMovies();
-        return "listMovies.xhtml";
-    }
-    
-    public String doSearchMovie(){
-        fMovie = itemEJB.findSpecificMovie();
         return "listMovies.xhtml";
     }
     
@@ -66,12 +52,8 @@ public class ItemController {
         gameList = itemEJB.findGames();
         return "listGames.xhtml";
     }
-    
-    public String doCreateCustomer() {
-        customer = itemEJB.createCustomer(customer);
-        customerList = itemEJB.findCustomer();
-        return "listCustomer.xhtml";
-    }
+
+
 
     public Movie getMovie() {
         return movie;
@@ -86,12 +68,10 @@ public class ItemController {
     }
 
     public void setGame(Game game) {
-
         this.game = game;
     }
 
     public List<Item> getItemList() {
-        itemList = itemEJB.findItems();
         return itemList;
     }
 
@@ -100,7 +80,6 @@ public class ItemController {
     }
 
     public List<Movie> getMovieList() {
-        movieList = itemEJB.findMovies();
         return movieList;
     }
 
@@ -109,8 +88,6 @@ public class ItemController {
     }
 
     public List<Game> getGameList() {
-                gameList = itemEJB.findGames();
-
         return gameList;
     }
 
@@ -118,13 +95,5 @@ public class ItemController {
         this.gameList = gameList;
     }
 
-    public void setSpecificCustomer(Customer fcustomer){
-        this.customer=fcustomer;
     
-    }
-  
-    public Customer getSpecificCustomer(){
-    return customer;
-    }
-  
 }

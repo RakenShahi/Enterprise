@@ -5,38 +5,34 @@
  */
 package ebsystem;
 
-import ebsystem.Item;
 import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Raken
  */
 @Entity
-@NamedQuery(name = "findAllMovies", query = "SELECT m FROM Movie m")
-@NamedQuery(name = "findSpecificMovie", query = "select sm from Movie sm where sm.title = :title")
 public class Movie extends Item {
 
     //Attributes
-    private Float duration;
+    private Integer duration;
     private String specialFeatures;   
 
     //Constructors
     public Movie() {
     }
     
-    public Movie(Float duration, String specialFeatures, Long id, String title, String description, String company, String platform, String classification, Float price, Float stockNumber) {
+    public Movie(Integer duration, String specialFeatures, Long id, String title, String description, String company, String platform, String classification, Float price, int stockNumber) {
         super(id, title, description, company, platform, classification, price, stockNumber);
         this.duration = duration;
         this.specialFeatures = specialFeatures;
     }
 
-    public Float getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Float duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
