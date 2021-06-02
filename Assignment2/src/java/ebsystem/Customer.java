@@ -6,6 +6,9 @@
 package ebsystem;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
@@ -13,23 +16,29 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c")
-//@NamedQuery(name = "findSpecificCustomer", query = "SELECT sc FROM Customer sc WHERE sc.")
+@NamedQuery(name = "findSpecificCustomer", query = "SELECT sc FROM Customer sc WHERE sc.name=:name")
 public class Customer {
 
     //Attributes
+    
     @Id
-    @GeneratedValue
-    protected Long id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long customerId;
+    @Column
     protected String name;
+    @Column
     protected String address;
+    @Column
     protected String phoneNumber;
+    @Column
     protected String emailAddress;
     
     //Constructors
     public Customer(){
     }
 
-    public Customer(String name, String address, String phoneNumber, String emailAddress) {
+    public Customer(Long id,String name, String address, String phoneNumber, String emailAddress) {
+        this.customerId = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -37,11 +46,11 @@ public class Customer {
     }
 
     public Long getId() {
-        return id;
+        return customerId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.customerId = id;
     }
 
     public String getName() {

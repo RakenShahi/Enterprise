@@ -35,8 +35,14 @@ public class CustomerEJB {
         return query.getResultList();
     }
     
-    public Customer findSpecificCustomer(){
-    TypedQuery<Customer> query1 = em.createNamedQuery("findSpecificCustomer", Customer.class);
-    return query1.getSingleResult();
+//    public Customer findSpecificCustomer(){
+//    TypedQuery<Customer> query1 = em.createNamedQuery("findSpecificCustomer", Customer.class);
+//    return query1.getSingleResult();
+//    }
+     
+    public List<Customer> findSpecificCustomer( String name) {
+        TypedQuery<Customer> query = em.createNamedQuery("findSpecificCustomer", Customer.class);
+        query.setParameter("name",name);
+        return query.getResultList();
     }
 }

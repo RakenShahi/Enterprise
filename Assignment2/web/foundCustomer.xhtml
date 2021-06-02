@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>The Found Customer</title>
+    </h:head>
+    <h:body>
+
+        <h1>The Found Customer</h1>
+        <hr/>
+        <h:dataTable value="#{customerController.foundCustomer}" var="fl" border="1">
+            <!--<h1>  Succesfully created list :   <h:outputText value="#{cl.name}"/>  </h1>-->
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Name"/>
+                </f:facet>
+                <h:outputText value="#{fl.name}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Address"/>
+                </f:facet>
+                <h:outputText value="#{fl.address}"/>
+            </h:column>
+
+
+        </h:dataTable>
+        <h:form>
+            <h:commandLink action="#{customerController.doNewCustomer}">Create a new Customer</h:commandLink>
+            |
+            <h:outputLink value="index.faces">Main Page</h:outputLink>
+        </h:form>
+        <hr/>
+       
+    </h:body>
+</html>

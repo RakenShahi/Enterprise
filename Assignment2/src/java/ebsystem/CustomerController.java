@@ -29,6 +29,25 @@ public class CustomerController implements Serializable{
     private CustomerEJB customerEJB;
     private Customer customer=new Customer();
     private List<Customer> customerList = new ArrayList<Customer>();
+        private List<Customer> foundCustomer = new ArrayList<Customer>();
+        private String name;
+
+    public List<Customer> getFoundCustomer() {
+        return foundCustomer;
+    }
+
+    public void setFoundCustomer(List<Customer> foundCustomer) {
+        this.foundCustomer = foundCustomer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     
     
     public String doNewCustomer(){
@@ -38,7 +57,12 @@ public class CustomerController implements Serializable{
     public String doCreateCustomer() {
         customer =customerEJB.createCustomer(customer);
         customerList = customerEJB.findCustomer();
-        return "listCustomer.xhtml";
+        return "listCustomers.xhtml";
+    }
+    public String doSearchCustomer(){
+        setName(name);       
+         foundCustomer= customerEJB.findSpecificCustomer(name);
+        return "foundCustomer.xhtml";
     }
 
     public Customer getCustomer() {
@@ -55,16 +79,5 @@ public class CustomerController implements Serializable{
 
     public void setCustomerList(List<Customer> customerList) {
         this.customerList = customerList;
-    }
-    
-    
-    
-    public void setSpecificCustomer(Customer fcustomer){
-        this.customer=fcustomer;
-    
-    }
-  
-    public Customer getSpecificCustomer(){
-    return customer;
     }
 }

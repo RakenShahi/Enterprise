@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+     >
+    <h:head>
+        <title>search for Customer</title>
+    </h:head>
+    <h:body>
+        <h1>Search for a Customer</h1>
+        <hr/>
+        <h:form>
+
+
+
+
+            <h:outputLabel value="Name "/>
+
+            <h:inputText value="#{customerController.name}"/>
+            <br></br>
+
+
+            <h:commandButton value="search for a Customer" action="#{customerController.doSearchCustomer}"/>
+
+
+        </h:form>
+        <hr/>
+
+
+    </h:body>
+    <hr/>
+    <a href="https://www.w3schools.com" style="font-size:20px;">The Stock of Movies | </a>
+
+    <a href="https://www.w3schools.com" style="font-size:20px;">Main Page | </a>
+</html>

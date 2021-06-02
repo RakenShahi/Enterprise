@@ -37,12 +37,9 @@ public class ItemEJB {
     }
     
     public List<Item> findSpecificMovie( String title) {
-//        title="JJLB";
         TypedQuery<Item> query = em.createNamedQuery("findSpecificMovie", Item.class);
         query.setParameter("title",title);
-                System.out.println("TItle obtained in item EJB:"+title);
         return query.getResultList();
-//        return fMovie;
     }
     
     
